@@ -1,4 +1,5 @@
 import "./globals.css";
+import Firstpage from './Firstpage'
 
 export const metadata = {
   title: "Screenify",
@@ -11,7 +12,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <Firstpage></Firstpage>
+      </body>
     </html>
   );
 }

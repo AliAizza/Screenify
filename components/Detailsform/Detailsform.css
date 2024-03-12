@@ -1,6 +1,5 @@
 .container{
     height: 100vh;
-    background: var(--dark-blue);
     display: flex;
     flex-direction: column;
     align-items: center;
