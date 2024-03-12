@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import Navbar from '../Navbar/Navbar';
+import Search from '../Search/Search';
+import './Homepage.css'
 
 
 export default function Homepage() {
@@ -10,6 +12,9 @@ export default function Homepage() {
     setLocation(target);
   }
   return (
-    <Navbar location={location} handlelocationchange={changelocation}></Navbar>
+    <div className='home-container'>
+      <Navbar location={location} handlelocationchange={changelocation}></Navbar>
+      <Search></Search>
+    </div>
   )
 }

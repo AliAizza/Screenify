@@ -7,18 +7,18 @@ import Homepage from "/components/Homepage/Homepage";
 import { useState } from "react";
 
 export default function () {
-  const [logedin, setlog] = useState(false);
+  const [logedin, setlog] = useState(true);
   const handleloginchange = (newstate) => {
     setlog(newstate);
   }
   return (
-    <div>
+    <div className='constant'>
       {
-      logedin === false 
-        ?
-      <Detailsform logedin={logedin} handlelogin={handleloginchange}></Detailsform>
-        :
-      <Homepage></Homepage>
+        logedin === false 
+          ?
+        <Detailsform logedin={logedin} handlelogin={handleloginchange}></Detailsform>
+          :
+        <Homepage></Homepage>
       }
     </div>
   );

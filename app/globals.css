@@ -16,3 +16,8 @@
 body{
     background: var(--dark-blue);
 }
+
+.constant{
+    position: absolute;
+    width: 100%;
+}
