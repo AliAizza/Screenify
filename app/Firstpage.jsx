@@ -16,7 +16,7 @@ export default function () {
       {
         logedin === false 
           ?
-        <Detailsform logedin={logedin} handlelogin={handleloginchange}></Detailsform>
+        <Detailsform className='login-form' logedin={logedin} handlelogin={handleloginchange}></Detailsform>
           :
         <Homepage></Homepage>
       }

@@ -1,6 +1,9 @@
-import React from 'react'
+"use client"
+
+import {useRef, useEffect, useState} from 'react'
 import data from '../../data.json'
 import Image from 'next/image'
+import { motion, useMotionValue } from 'framer-motion'
 import './Trending.css'
 
 import mv from '/public/assets/icon-category-movie.svg'
@@ -12,13 +15,59 @@ import play from '/public/assets/icon-play.svg'
 
 
 export default function Trending() {
+    const posref = useRef();
+    const [index, setIndex] = useState(5);
+    const [isDraging, setDraging] = useState(false);
+    const [isAnimating, setIsAnimating] = useState(true);
+
+    const xposition = useMotionValue(0);
+    
+    const startedDraging = () => {
+        setDraging(true);
+    }
+    const stopedDraging = () => {
+        setDraging(false);
+
+        if (xposition.get() <= -50){
+            setIndex((previndex) => previndex + 1)
+        }
+        else if (xposition.get() >= 50){
+            setIndex((previndex) => previndex - 1)
+        }
+    }
+    
+    const handleInfinity = () =>{
+        if (index === 10 || index === 0)
+        {
+                setIsAnimating(false);
+                setIndex(5);
+        }
+        else
+            setIsAnimating(true);
+    }
+
   return (
     <div className='trending-section'>
         <h1>Trending</h1>
-        <div className='trends'>
+        <motion.div 
+            initial={{translateX: `-${5 * 31.875}rem`}}
+            className='trends'
+            drag="x"
+            
+            dragConstraints={{right: 0, left: 0}}
+            whileTap={{cursor: "grabbing"}}
+            onDragStart={startedDraging}
+            onDragEnd={stopedDraging}
+            onTransitionEnd={handleInfinity}
+            style={{x: xposition, transition: isAnimating ? '0.1s' : '0s'}}
+            animate={{translateX: `-${index * 31.875}rem`}}
+            transition={{duration: isAnimating ? 0.15 : 0}}
+            ref={posref}
+            
+            >
             {
-                data.filter(data => data.isTrending === true).map((movie, index) => (
-                    <div className='trend-card' key={index}>
+                [...data, ...data, ...data].filter(data => data.isTrending === true).map((movie, index) => (
+                    <motion.div className='trend-card' key={index} whileTap={{cursor: "grabbing"}}>
                         <div className='trend-hover'>
                             <Image className='trend-banner' src={movie.thumbnail.trending.large} alt='image not found' width={470} height={230}></Image>
                             <div className='trend-infos'>
@@ -38,10 +87,10 @@ export default function Trending() {
                             </div>
                         </div>
                         <Image className='bookmark' src={movie.isBookmarked === true ? bookfull : bookempty} alt='bookmark'></Image>
-                    </div>
+                    </motion.div>
                 ))
             }
-        </div>
+        </motion.div>
     </div>
   )
 }
