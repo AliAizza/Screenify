@@ -19,6 +19,7 @@ export default function Trending() {
     const [index, setIndex] = useState(5);
     const [isDraging, setDraging] = useState(false);
     const [isAnimating, setIsAnimating] = useState(true);
+    const [canDrag, setDragstate] = useState(true);
 
     const xposition = useMotionValue(0);
     
@@ -34,6 +35,10 @@ export default function Trending() {
         else if (xposition.get() >= 50){
             setIndex((previndex) => previndex - 1)
         }
+        setDragstate(false);
+        setTimeout(() => {
+            setDragstate(true);
+        }, 550);
     }
     
     const handleInfinity = () =>{
@@ -52,16 +57,15 @@ export default function Trending() {
         <motion.div 
             initial={{translateX: `-${5 * 31.875}rem`}}
             className='trends'
-            drag="x"
+            drag={canDrag ? 'x' : ''}
             
             dragConstraints={{right: 0, left: 0}}
-            whileTap={{cursor: "grabbing"}}
             onDragStart={startedDraging}
             onDragEnd={stopedDraging}
             onTransitionEnd={handleInfinity}
-            style={{x: xposition, transition: isAnimating ? '0.1s' : '0s'}}
+            style={{x: xposition}}
             animate={{translateX: `-${index * 31.875}rem`}}
-            transition={{duration: isAnimating ? 0.15 : 0}}
+            transition={{duration: isAnimating ? 0.3 : 0, ease: "linear"}}
             ref={posref}
             
             >

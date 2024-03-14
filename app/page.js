@@ -1,11 +1,16 @@
+"use client"
+
 import "./globals.css";
 import Trending from '/components/Trending/Trending'
-import Image from "next/image";
+import Search from '/components/Search/Search'
+import List from '/components/List/List'
 
 export default function Home() {
   return (
-    <main>
+    <div className="home-page">
+      <Search></Search>
       <Trending></Trending>
-    </main>
+      <List searched='test'></List>
+    </div>
   );
 }
