@@ -10,7 +10,7 @@ export default function Home() {
     <div className="home-page">
       <Search></Search>
       <Trending></Trending>
-      <List searched='test'></List>
+      <List searched=''></List>
     </div>
   );
 }

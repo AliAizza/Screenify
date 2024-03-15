@@ -1,6 +1,8 @@
 import React from 'react'
+import './List.css'
 import data from '../../data.json'
 import { usePathname } from 'next/navigation'
+import Image  from 'next/image';
 
 
 export default function List({searched}) {
@@ -9,7 +11,7 @@ export default function List({searched}) {
     let title;
     if (searched !== ''){
         data_to_display = data.filter(display => display.title.includes(searched));
-        title = `Found ${data_to_display.length} results for ‘${searched}’`;
+        title = `Found ${data_to_display.length > 0 ? data_to_display.length : ''} ${data_to_display.length === 0 ? 'nothing like' : data_to_display.length === 1 ? 'result for' : 'results for'} ‘${searched}’`;
     }
     else if(page === '/'){
         data_to_display = data.filter(display => display.isTrending === false);
@@ -28,6 +30,17 @@ export default function List({searched}) {
         title = "Bookmarked Movies";
     }
   return (
-    <div className='list'></div>
+    <div className='list'>
+        <h1>{title}</h1>
+        <div className='displaying-list'>
+            {
+                data_to_display.map((displayed, index) => (
+                    <div className='displayed-container' key={index}>
+                        <Image src={displayed.thumbnail.regular.large} alt='thumbnail' width={280} height={174}></Image>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
   )
 }

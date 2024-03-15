@@ -1,0 +1,6 @@
+.list .displaying-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 17.5rem);
+    grid-column-gap: 1.5rem;
+    /* justify-content: center; */
+}
