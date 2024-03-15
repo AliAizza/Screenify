@@ -30,14 +30,17 @@
     gap: 2.5rem;
 }
 
-.navbar .page *{
+.navbar .page img{
     cursor: pointer;
 }
 
-.navbar .page *:hover{
+.navbar .page img:hover{
     filter: invert(59%) sepia(91%) saturate(5164%) hue-rotate(335deg) brightness(99%) contrast(98%);
 }
 
-.navbar .page *.active{
+.navbar .page img.active{
+    filter: brightness(0) invert(1);
+}
+.navbar .page img.active:hover {
     filter: brightness(0) invert(1);
 }
