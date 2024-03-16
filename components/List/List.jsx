@@ -35,7 +35,10 @@ export default function List({searched}) {
         title = "Bookmarked Movies";
     }
     if (searched !== ''){
-        data_to_display = data_to_display.filter(display => display.title.toLowerCase().replace(/\s/g, '').includes(searched.toLowerCase().replace(/\s/g, '')));
+        if (page === '/')
+            data_to_display = data.filter(display => display.title.toLowerCase().replace(/\s/g, '').includes(searched.toLowerCase().replace(/\s/g, '')));
+        else
+            data_to_display = data_to_display.filter(display => display.title.toLowerCase().replace(/\s/g, '').includes(searched.toLowerCase().replace(/\s/g, '')));
         title = `Found ${data_to_display.length > 0 ? data_to_display.length : ''} ${data_to_display.length === 0 ? 'nothing like' : data_to_display.length === 1 ? 'result for' : 'results for'} ‘${searched}’`;
     }
   return (

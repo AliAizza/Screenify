@@ -15,6 +15,7 @@ import play from '/public/assets/icon-play.svg'
 
 
 export default function Trending() {
+    var first_time = 1;
     const posref = useRef();
     const [index, setIndex] = useState(5);
     const [isDraging, setDraging] = useState(false);
@@ -38,7 +39,7 @@ export default function Trending() {
         setDragstate(false);
         setTimeout(() => {
             setDragstate(true);
-        }, 550);
+        }, 600);
     }
     
     const handleInfinity = () =>{
@@ -51,6 +52,22 @@ export default function Trending() {
             setIsAnimating(true);
     }
 
+    useEffect(() => {
+        const interval = setInterval(() => {
+            const x = xposition.get();
+            
+            if (x === 0) {
+                setIndex((pv) => {
+                    return pv + 1;
+                });
+                handleInfinity();
+            }
+        }, (index === 5 && first_time !== 0) ? 100 : 7000);
+        
+        first_time = 0;
+        return () => clearInterval(interval);
+
+    }, [index]);
   return (
     <div className='trending-section'>
         <h1>Trending</h1>
@@ -67,6 +84,7 @@ export default function Trending() {
             animate={{translateX: `-${index * 31.875}rem`}}
             transition={{duration: isAnimating ? 0.3 : 0, ease: "linear"}}
             ref={posref}
+            
             
             >
             {
