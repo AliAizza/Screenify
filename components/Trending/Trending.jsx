@@ -57,7 +57,7 @@ export default function Trending({buffer, width}) {
               });
               handleInfinity();
           }
-      }, (index === 5 && first_time !== 0) ? 100 : 5000);
+      }, (index === 5 && first_time === 0) ? 100 : 5000);
 
       first_time = 0;
       return () => clearInterval(interval);
