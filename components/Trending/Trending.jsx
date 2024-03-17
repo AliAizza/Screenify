@@ -49,6 +49,17 @@ export default function Trending({ buffer, width }) {
       setIndex(5);
     } else setIsAnimating(true);
   };
+  
+  useEffect(() => {
+    
+    if (index === 0) {
+      const interval = setInterval(() => {
+        setIsAnimating(false);
+        setIndex(5);
+      }, 300);
+      return () => clearInterval(interval);
+    } else setIsAnimating(true);
+  }, [index]);
 
   useEffect(() => {
     const interval = setInterval(
