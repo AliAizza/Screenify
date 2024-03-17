@@ -30,7 +30,7 @@ export default function Navbar() {
                   <Image className={location === '/Series' ? 'active' : ''} src={series} alt='series'></Image>
                 </Link>
                 <Link href='/Bookmarked'>
-                  <Image className={location === '/Bookmarked' ? 'active' : ''} src={bookmarked} alt='bookmarked'></Image>
+                  <Image className={location === '/Bookmarked' ? 'active bookmark' : 'bookmark'} src={bookmarked} alt='bookmarked'></Image>
                 </Link>
             </div>
         </div>

@@ -32,11 +32,27 @@ body{
     margin-left: 10.25rem;
 }
 
+.animation{
+    width: 20rem;
+    margin: auto;
+    padding-top: 25vh;
+}
+
 @media screen and (max-width: 875px) {
     .home-page{
         margin: 0 1.56rem;
     }
     .constant{
         z-index: 99;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .home-page {
+        margin: 0;
+    }
+    .animation {
+        width: 5rem;
+        padding-top: 45vh;
     }
 }

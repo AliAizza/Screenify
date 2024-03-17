@@ -130,3 +130,40 @@
         padding-top: 12.06rem;
     }
 }
+
+@media screen and (max-width: 760px) {
+    .trending-section{
+        padding-left: 1rem;
+        padding-top: 9rem;
+    }
+    .trending-section .trend-card,
+    .trending-section .trend-card .trend-hover::after{
+        width: 15rem;
+        height: 8.75rem;
+    }
+    .trending-section .trends {
+        gap: 1rem;
+    }
+    .trending-section .trend-card h2{
+        font-size: 0.9375rem;
+        left: 1rem;
+        bottom: 1rem;
+    }
+    .trending-section .trend-card .trend-infos{
+        left: 1rem;
+        top: auto;
+        bottom: 2.44rem;
+    }
+    .trending-section .trend-card .bookmark{
+        top: 0.5rem;
+        right: 0.5rem;
+    }
+    .trending-section .trend-card .trend-hover .play-hover{
+        transform: translateY(3rem) scale(0.8);
+        top: 2.5rem;
+        left: 4rem;
+    }
+    .trending-section .trend-card .trend-hover:hover .play-hover{
+        transform: translateY(0) scale(0.8);
+    }
+}

@@ -61,5 +61,35 @@
     .navbar .page{
         flex-direction: row;
         margin: 0;
+        gap: 2rem;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .navbar{
+        margin: 0;
+        border-radius: 0;
+        width: 100%;
+        max-width: 100%;
+        padding: 1rem;
+    }
+    .navbar img{
+        width: 1.5625rem;
+        height: 1.25rem;
+    }
+    .navbar .page{
+        gap: 1.5rem;
+    }
+    .navbar .page img{
+        width: 1rem;
+        height: 1rem;
+    }
+    .navbar .page img.bookmark{
+        width: 0.846rem;
+        height: 1rem;
+    }
+    .navbar .profile{
+        width: 1.5rem;
+        height: 1.5rem;
     }
 }
