@@ -44,11 +44,22 @@ export default function Trending({ buffer, width }) {
 
   const handleInfinity = () => {
     console.log(index);
-    if (index === 1 || index === 10) {
+    if (index === 0 || index === 10) {
       setIsAnimating(false);
       setIndex(5);
     } else setIsAnimating(true);
   };
+  
+  useEffect(() => {
+    
+    if (index === 0) {
+      const interval = setInterval(() => {
+        setIsAnimating(false);
+        setIndex(5);
+      }, 300);
+      return () => clearInterval(interval);
+    } else setIsAnimating(true);
+  }, [index]);
 
   useEffect(() => {
     const interval = setInterval(
@@ -67,6 +78,7 @@ export default function Trending({ buffer, width }) {
     setFirstTime(0);
     return () => clearInterval(interval);
   }, [index]);
+
   return (
     <div className="trending-section">
       <h1>Trending</h1>
@@ -77,7 +89,6 @@ export default function Trending({ buffer, width }) {
         dragConstraints={{ right: 0, left: 0 }}
         onDragStart={startedDraging}
         onDragEnd={stopedDraging}
-        // onTransitionEnd={handleInfinity}
         style={{ x: xposition }}
         animate={{ translateX: `-${index * buffer}rem` }}
         transition={{ duration: isAnimating ? 0.3 : 0, ease: "linear" }}
