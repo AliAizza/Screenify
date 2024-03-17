@@ -1,0 +1,169 @@
+.trending-section{
+    overflow: hidden;
+    padding-top: 8.12rem;
+    padding-right: 2.25rem;
+    margin-bottom: 2.5rem;
+}
+
+.trending-section h1{
+    font-family: 'Outfit';
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: -0.03125rem;
+    margin-bottom: 1.56rem;
+}
+
+.trending-section .trends{
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.trending-section .trend-card{
+    position: relative;
+    cursor: pointer;
+    width: 29.375rem;
+    height: 14.375rem;
+}
+
+.trending-section .trend-card .trend-hover .play-hover{
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.25);
+    top: 5.69rem;
+    left: 11.03rem;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+    border-radius: 1.78125rem;
+    gap: 1.19rem;
+    padding: 0.5rem 1.5rem 0.5rem 0.5rem;
+    transform: translateY(3rem);
+    opacity: 0;
+    pointer-events: none;
+    transition: .4s;
+}
+
+.trending-section .trend-card .trend-hover:hover .play-hover{
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.trending-section .trend-card .trend-hover .play-hover h4{
+    color: #fff;
+    font-family: 'Outfit';
+    font-size: 1.125rem;
+    font-weight: 400;
+}
+
+.trending-section .trend-card .trend-hover::after{
+    content: '';
+    position: absolute;
+    background: black;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 0.5rem;
+    opacity: 0;
+    z-index: 1;
+    transition: .4s;
+}
+
+.trending-section .trend-card .trend-hover:hover::after{
+    opacity: 0.5;
+}
+
+
+.trending-section .trend-card .trend-banner{
+    border-radius: 0.5rem;
+}
+
+.trending-section .trend-card .trend-infos{
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    top: 9.62rem;
+    left: 1.5rem;
+}
+
+.trending-section .trend-card .trend-infos p{
+    color: #fff;
+    font-family: 'Outfit';
+    font-size: 0.9375rem;
+    font-weight: 400;
+    opacity: 0.75;
+}
+
+.trending-section .trend-card .trend-infos .category{
+    display: flex;
+    align-items: center;
+    gap: 0.38rem;
+}
+
+.trending-section .trend-card h2{
+    position: absolute;
+    z-index: 2;
+    color: #fff;
+    font-family: 'Outfit';
+    font-size: 1.5rem;
+    font-weight: 400;
+    left: 1.5rem;
+    bottom: 1.5rem;
+}
+
+.trending-section .trend-card .bookmark{
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    z-index: 2;
+}
+
+.trending-section .trend-card .bookmark:hover{
+    content: url('/assets/bookmark-hover.svg');
+}
+
+@media screen and (max-width: 875px) {
+    .trending-section{
+        padding-top: 12.06rem;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .trending-section{
+        padding-left: 1rem;
+        padding-top: 9rem;
+    }
+    .trending-section .trend-card,
+    .trending-section .trend-card .trend-hover::after{
+        width: 15rem;
+        height: 8.75rem;
+    }
+    .trending-section .trends {
+        gap: 1rem;
+    }
+    .trending-section .trend-card h2{
+        font-size: 0.9375rem;
+        left: 1rem;
+        bottom: 1rem;
+    }
+    .trending-section .trend-card .trend-infos{
+        left: 1rem;
+        top: auto;
+        bottom: 2.44rem;
+    }
+    .trending-section .trend-card .bookmark{
+        top: 0.5rem;
+        right: 0.5rem;
+    }
+    .trending-section .trend-card .trend-hover .play-hover{
+        transform: translateY(3rem) scale(0.8);
+        top: 2.5rem;
+        left: 4rem;
+    }
+    .trending-section .trend-card .trend-hover:hover .play-hover{
+        transform: translateY(0) scale(0.8);
+    }
+}

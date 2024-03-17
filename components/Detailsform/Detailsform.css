@@ -1,0 +1,181 @@
+.container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--dark-blue);
+    position: absolute;
+    width: 100%;
+    z-index: 999;
+}
+
+.logo{
+    margin-top: 4.9rem;
+    margin-bottom: 5.19rem;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--semi-dark-blue);
+    width: 25rem;
+    border-radius: 1.25rem;
+    padding: 2rem;
+    height: 26.3rem;
+    max-height: 23.3125rem;
+    transition: .4s;
+    position: relative;
+}
+
+.form.expanded{
+    max-height: 26.3rem;
+}
+
+.form h2{
+    color: #FFF;
+    font-family: 'Outfit';
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: -0.03125rem;
+    align-self: flex-start;
+    margin-bottom: 2.5rem;
+}
+
+.form .in{
+    width: 100%;
+    position: relative;
+}
+
+.form input{
+    width: 100%;
+    border: 0;
+    outline: 0;
+    background: 0;
+    margin-bottom: 1.5rem;
+    padding: 0 6.8rem 1.12rem 1rem;
+    color: #FFF;
+    font-family: 'Outfit';
+    font-size: 0.9375rem;
+    font-weight:300;
+    caret-color: var(--red);
+    border-bottom: 1px solid var(--greyish-blue);
+}
+
+.form .in p{
+    color: var(--red);
+    font-family: 'Outfit';
+    font-size: 0.8125rem;
+    font-weight: 400;
+    position: absolute;
+    right: 1rem;
+    top: 0.17rem;
+    transform: translateY(2rem);
+    opacity: 0;
+    transition: .4s;
+}
+
+.form .in p.err{
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.form .in .line-after::after{
+    content: "";
+    background: #fff;
+    width: 0;
+    padding: 1px 0;
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transition: all 0.3s ease;
+}
+
+.form .in input:focus ~ .line-after::after{
+    padding: 1px 50%;
+    left: 0;
+}
+
+.form .in .line-after.error::after{
+    background: var(--red);
+    padding: 1px 50%;
+    left: 0;
+}
+
+.form input::placeholder{
+    color: #FFF;
+    font-family: 'Outfit';
+    font-size: 0.9375rem;
+    font-weight: 200;
+    opacity: 0.5;
+}
+
+.form .abs{
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    transition: .3s;
+}
+
+.form .abs.shown{
+    opacity: 1;
+}
+
+.form .down{
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    transform: translateY(-4rem);
+    align-items: center;
+    transition: .4s;
+}
+
+.form .down.opened{
+    transform: translateY(0);
+}
+
+.form button{
+    border: none;
+    outline: none;
+    margin-top: 1rem;
+    width: 100%;
+    padding: 0.9rem;
+    border-radius: 0.375rem;
+    background: var(--red);
+    color: #FFF;
+    font-family: 'Outfit';
+    font-size: 0.9375rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.form button:hover{
+    color: black;
+    background: #fff;
+}
+
+.form .change{
+    display: flex;
+    align-items: center;
+    gap: 0.56rem;
+}
+
+.form .change h6{
+    font-family: 'Outfit';
+    font-size: 0.9375rem;
+    font-weight: 400;
+    color: #FFF;
+}
+
+.form .change h6.toggle{
+    color: var(--red);
+    cursor: pointer;
+}
+
+.form .change h6.toggle:hover{
+    text-decoration: underline;
+}
