@@ -49,17 +49,6 @@ export default function Trending({ buffer, width }) {
       setIndex(5);
     } else setIsAnimating(true);
   };
-  
-  useEffect(() => {
-    
-    if (index === 0) {
-      const interval = setInterval(() => {
-        setIsAnimating(false);
-        setIndex(5);
-      }, 300);
-      return () => clearInterval(interval);
-    } else setIsAnimating(true);
-  }, [index]);
 
   useEffect(() => {
     const interval = setInterval(
@@ -73,7 +62,7 @@ export default function Trending({ buffer, width }) {
           handleInfinity();
         }
       },
-      index === 5 && first_time === 0 ? 100 : 5000
+      index === 5 && first_time === 0 ? 2000 : 5000
     );
     setFirstTime(0);
     return () => clearInterval(interval);
