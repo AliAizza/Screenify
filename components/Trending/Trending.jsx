@@ -13,7 +13,8 @@ import bookempty from "/public/assets/bookmark-empty.svg";
 import bookfull from "/public/assets/bookmark-full.svg";
 import play from "/public/assets/icon-play.svg";
 
-export default function Trending({buffer, width}) {
+export default function Trending({ buffer, width }) {
+  var swipe = width > 760 ? 50 : 15;
   const [first_time, setFirstTime] = useState(1);
   const posref = useRef();
   const [index, setIndex] = useState(5);
@@ -29,11 +30,12 @@ export default function Trending({buffer, width}) {
   const stopedDraging = () => {
     setDraging(false);
 
-    if (xposition.get() <= -50) {
+    if (xposition.get() <= swipe * -1) {
       setIndex((previndex) => previndex + 1);
-    } else if (xposition.get() >= 50) {
+    } else if (xposition.get() >= swipe) {
       setIndex((previndex) => previndex - 1);
     }
+    handleInfinity();
     setDragstate(false);
     setTimeout(() => {
       setDragstate(true);
@@ -41,26 +43,29 @@ export default function Trending({buffer, width}) {
   };
 
   const handleInfinity = () => {
-    if (index === 10 || index === 0) {
+    console.log(index);
+    if (index === 1 || index === 10) {
       setIsAnimating(false);
       setIndex(5);
     } else setIsAnimating(true);
   };
 
   useEffect(() => {
-      const interval = setInterval(() => {
-          const x = xposition.get();
+    const interval = setInterval(
+      () => {
+        const x = xposition.get();
 
-          if (x === 0) {
-              setIndex((pv) => {
-                  return pv + 1;
-              });
-              handleInfinity();
-          }
-      }, (index === 5 && first_time === 0) ? 100 : 5000);
-      setFirstTime(0);
-      return () => clearInterval(interval);
-
+        if (x === 0) {
+          setIndex((pv) => {
+            return pv + 1;
+          });
+          handleInfinity();
+        }
+      },
+      index === 5 && first_time === 0 ? 100 : 5000
+    );
+    setFirstTime(0);
+    return () => clearInterval(interval);
   }, [index]);
   return (
     <div className="trending-section">
@@ -72,7 +77,7 @@ export default function Trending({buffer, width}) {
         dragConstraints={{ right: 0, left: 0 }}
         onDragStart={startedDraging}
         onDragEnd={stopedDraging}
-        onTransitionEnd={handleInfinity}
+        // onTransitionEnd={handleInfinity}
         style={{ x: xposition }}
         animate={{ translateX: `-${index * buffer}rem` }}
         transition={{ duration: isAnimating ? 0.3 : 0, ease: "linear" }}
@@ -97,6 +102,7 @@ export default function Trending({buffer, width}) {
                   alt="image not found"
                   width={width > 760 ? 470 : 240}
                   height={width > 760 ? 230 : 140}
+                  priority={true}
                 ></Image>
                 <div className="trend-infos">
                   <p>{movie.year}</p>
