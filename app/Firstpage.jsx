@@ -6,7 +6,7 @@ import Detailsform from "/components/Detailsform/Detailsform";
 import Homepage from "/components/Homepage/Homepage";
 import { useState, useEffect } from "react";
 
-export default function () {
+export default function Firstpage() {
   const [logedin, setlog] = useState(true);
   const handleloginchange = (newstate) => {
     setlog(newstate);
@@ -27,3 +27,4 @@ export default function () {
     </div>
   );
 }
+
