@@ -3,6 +3,7 @@ import './List.css'
 import data from '../../data.json'
 import { usePathname } from 'next/navigation'
 import Image  from 'next/image';
+import { useState, useEffect } from 'react';
 
 import mv from '/public/assets/icon-category-movie.svg'
 import tv from '/public/assets/icon-category-tv.svg'
@@ -12,6 +13,21 @@ import bookfull from '/public/assets/bookmark-full.svg'
 import play from '/public/assets/icon-play.svg'
 
 export default function List({searched}) {
+    const [width, setWidth] = useState(1440);
+
+        useEffect(() => {
+            const handleResize = () => {
+                setWidth(window.innerWidth);
+            };
+
+
+            window.addEventListener('resize', handleResize);
+
+
+            return () => {
+            window.removeEventListener('resize', handleResize);
+            };
+    }, []);
     const page = usePathname();
     let data_to_display = [];
     let bookmarked_series = [];
@@ -80,7 +96,7 @@ export default function List({searched}) {
                                 bookmarked_series.map((displayed, index) => (
                                     <div className='displayed-container' key={index}>
                                         <div className='displayed-hover'>
-                                            <Image className='displayed-thumbnail' src={displayed.thumbnail.regular.large} alt='thumbnail' width={280} height={174}></Image>
+                                            <Image className='displayed-thumbnail' src={width > 1060 ? displayed.thumbnail.regular.large : displayed.thumbnail.regular.medium} alt='thumbnail' width={width > 1060 ? 280 : 220} height={width > 1060 ? 174 : 140}></Image>
                                             <div className='play-hover'>
                                                 <Image src={play} alt='play icon'></Image>
                                                 <h4>Play</h4>

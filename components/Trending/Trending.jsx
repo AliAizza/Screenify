@@ -62,7 +62,7 @@ export default function Trending() {
                 });
                 handleInfinity();
             }
-        }, (index === 5 && first_time !== 0) ? 100 : 7000);
+        }, (index === 5 && first_time !== 0) ? 100 : 5000);
         
         first_time = 0;
         return () => clearInterval(interval);

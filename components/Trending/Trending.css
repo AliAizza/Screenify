@@ -125,3 +125,8 @@
     content: url('/assets/bookmark-hover.svg');
 }
 
+@media screen and (max-width: 875px) {
+    .trending-section{
+        padding-top: 12.06rem;
+    }
+}

@@ -1,5 +1,5 @@
 .list.top-space{
-    padding-top: 8.12rem;
+    padding-top: 12.06rem;
 }
 
 .list .displaying-list{
@@ -122,4 +122,29 @@
 
 .list .displaying-list .displayed-container .bookmark:hover{
     content: url('/assets/bookmark-hover.svg');
+}
+
+@media screen and (max-width: 1060px) {
+    .list .displaying-list .displayed-container .displayed-hover,
+    .list .displaying-list .displayed-container .displayed-hover::after,
+    .list .displaying-list .displayed-container .displayed-hover .displayed-thumbnail{
+        width: 13.75rem;
+        height: 8.75rem;
+    }
+    .list .displaying-list .displayed-container{
+        max-width: 13.75rem;
+    }
+    .list .displaying-list .displayed-container .displayed-hover .play-hover{
+        left: 3.2rem;
+        top: 3rem;
+    }
+    .list .displaying-list{
+        grid-template-columns: repeat(auto-fit, 13.75rem);
+    }
+}
+
+@media screen and (max-width: 875px){
+     .list .displaying-list{
+        justify-content: center;
+    }
 }

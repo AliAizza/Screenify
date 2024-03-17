@@ -23,7 +23,20 @@ body{
     width: 100%;
 }
 
+.constant.above{
+    z-index: 999;
+}
+
 .home-page{
     position: relative;
     margin-left: 10.25rem;
+}
+
+@media screen and (max-width: 875px) {
+    .home-page{
+        margin: 0 1.56rem;
+    }
+    .constant{
+        z-index: 99;
+    }
 }

@@ -50,3 +50,9 @@
 .search input:focus + .underline{
     width: 100%;
 }
+
+@media screen and (max-width: 875px) {
+    .search {
+        margin-top: 8.06rem;
+    }
+}

@@ -4,19 +4,23 @@ import React from 'react'
 import "./globals.css";
 import Detailsform from "/components/Detailsform/Detailsform";
 import Homepage from "/components/Homepage/Homepage";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function () {
   const [logedin, setlog] = useState(true);
   const handleloginchange = (newstate) => {
     setlog(newstate);
   }
+  useEffect(() => {
+    document.body.style.overflow = !logedin ? 'hidden' : 'visible';
+  }, [logedin]);
+
   return (
-    <div className='constant'>
+    <div className={logedin ? 'constant' : 'constant above'}>
       {
         logedin === false 
           ?
-        <Detailsform className='login-form' logedin={logedin} handlelogin={handleloginchange}></Detailsform>
+        <Detailsform logedin={logedin} handlelogin={handleloginchange}></Detailsform>
           :
         <Homepage></Homepage>
       }
