@@ -14,7 +14,7 @@ import bookfull from "/public/assets/bookmark-full.svg";
 import play from "/public/assets/icon-play.svg";
 
 export default function Trending({buffer, width}) {
-  var first_time = 1;
+  const [first_time, setFirstTime] = useState(1);
   const posref = useRef();
   const [index, setIndex] = useState(5);
   const [isDraging, setDraging] = useState(false);
@@ -59,7 +59,7 @@ export default function Trending({buffer, width}) {
           }
       }, (index === 5 && first_time !== 0) ? 2000 : 5000);
 
-      first_time = 0;
+      setFirstTime(0);
       return () => clearInterval(interval);
 
   }, [index]);

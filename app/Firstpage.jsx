@@ -6,7 +6,7 @@ import Detailsform from "/components/Detailsform/Detailsform";
 import Homepage from "/components/Homepage/Homepage";
 import { useState, useEffect } from "react";
 
-export default function () {
+export default function Firstpage () {
   const [logedin, setlog] = useState(false);
   const handleloginchange = (newstate) => {
     setlog(newstate);
@@ -20,7 +20,7 @@ export default function () {
       {
         logedin === false 
           ?
-        <Detailsform logedin={logedin} handlelogin={handleloginchange}></Detailsform>
+        <Detailsform handlelogin={handleloginchange}></Detailsform>
           :
         <Homepage></Homepage>
       }

@@ -10,7 +10,7 @@ import { useState } from 'react'
 
 
 
-export default function Detailsform({logedin, handlelogin}) {
+export default function Detailsform({handlelogin}) {
   const [state, setState] = useState('login');
   const toggleState = () => {
     if(state === 'login')
