@@ -1,5 +1,5 @@
 .container{
-    height: 100vh;
+    height: 120vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7,6 +7,7 @@
     position: absolute;
     width: 100%;
     z-index: 999;
+    overflow: hidden;
 }
 
 .logo{
@@ -178,4 +179,12 @@
 
 .form .change h6.toggle:hover{
     text-decoration: underline;
+}
+
+@media screen and (max-width: 450px) {
+    .form{
+        width: 90%;
+        padding: 2rem 1rem;
+    }
+    
 }
