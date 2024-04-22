@@ -7,7 +7,7 @@ import Homepage from "/components/Homepage/Homepage";
 import { useState, useEffect } from "react";
 
 export default function Firstpage() {
-  const [logedin, setlog] = useState(true);
+  const [logedin, setlog] = useState(false);
   const handleloginchange = (newstate) => {
     setlog(newstate);
   }
